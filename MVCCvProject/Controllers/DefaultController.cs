@@ -35,5 +35,33 @@ namespace MVCCvProject.Controllers
             var certificate = db.CertificateTable.ToList();
             return PartialView(certificate);
         }
+
+        public PartialViewResult Skills()
+        {
+            var skills = db.SkillsTable.ToList();
+            return PartialView(skills); 
+        }
+
+        public PartialViewResult Hobbies()
+        {
+            var hobbies = db.HobbyTable.ToList();
+            return PartialView(hobbies);
+        }
+
+        [HttpGet]
+        public PartialViewResult Contact()
+        {
+            var contact = db.ContactTable.ToList();
+            return PartialView(contact);
+        }
+
+        [HttpPost]
+        public PartialViewResult Contact(ContactTable sendItem)
+        {
+            sendItem.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+            db.ContactTable.Add(sendItem);
+            db.SaveChanges();
+            return PartialView();
+        }
     }
 }

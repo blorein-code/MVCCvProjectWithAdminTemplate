@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CVProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CVProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CVProject.dbo.CertificateTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CertificateTable">
@@ -14,8 +14,6 @@ warning 6002: The table/view 'CVProject.dbo.CertificateTable' does not have a pr
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="250" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CVProject.dbo.ContactTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ContactTable">
           <Key>
             <PropertyRef Name="ID" />
@@ -95,22 +93,13 @@ warning 6002: The table/view 'CVProject.dbo.SkillsTable' does not have a primary
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="CVProjectModelStoreContainer">
+          <EntitySet Name="ContactTable" EntityType="Self.ContactTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfoTable" EntityType="Self.UserInfoTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CertificateTable" EntityType="Self.CertificateTable" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CertificateTable].[ID] AS [ID], 
     [CertificateTable].[Description] AS [Description]
     FROM [dbo].[CertificateTable] AS [CertificateTable]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ContactTable" EntityType="Self.ContactTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ContactTable].[ID] AS [ID], 
-    [ContactTable].[NameSurname] AS [NameSurname], 
-    [ContactTable].[Email] AS [Email], 
-    [ContactTable].[Subject] AS [Subject], 
-    [ContactTable].[Message] AS [Message], 
-    [ContactTable].[Date] AS [Date]
-    FROM [dbo].[ContactTable] AS [ContactTable]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="EducationTable" EntityType="Self.EducationTable" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -157,8 +146,7 @@ warning 6002: The table/view 'CVProject.dbo.SkillsTable' does not have a primary
     FROM [dbo].[SkillsTable] AS [SkillsTable]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CVProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

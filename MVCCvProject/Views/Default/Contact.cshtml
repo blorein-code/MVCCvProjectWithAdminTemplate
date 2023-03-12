@@ -1,0 +1,30 @@
+﻿@using MVCCvProject.Models.Entity
+@model List<ContactTable>
+
+<div class="resume-section-content">
+    <form method="post">
+        <h2 class="mb-5">İletişim</h2>
+
+        <label>Ad Soyad</label>
+        <input type="text" class="form-control form-control-xs" name="NameSurname"/>
+
+        <label>Email</label>
+        <input type="email" class="form-control form-control-xs" name="Email"/>
+
+        <label>Konu</label>
+        <input type="text" class="form-control form-control-xs" name="Subject"/>
+
+        <label>Mesaj</label>
+        <input type="text" class="form-control form-control-xs" name="Message"/>
+
+        <button id="sendButton" class="btn btn-info mt-3">Mesaj Gönder</button>
+    </form>
+</div>
+
+
+
+<script>
+    document.getElementById("sendButton").addEventListener("click", function () {
+        alert("Mesajınız alındı.")
+    })
+</script>
